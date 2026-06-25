@@ -1,9 +1,315 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="id">
 <head>
-<title>It works! Apache httpd</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 Untuk Kamu yang Spesial 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px 30px;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 25px 50px -8px rgba(0,0,0,0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .heart-bg {
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.08;
+            top: -20px;
+            right: -20px;
+            transform: rotate(15deg);
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .subtitle {
+            color: #6c3483;
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .message-box {
+            background: white;
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.15);
+            border: 2px solid #f8bbd0;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #4a1942;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 25px 0 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d63384, #6c3483);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(214, 51, 132, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f8bbd0;
+            color: #4a1942;
+        }
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            background: #f48fb1;
+        }
+
+        .btn-pink {
+            background: linear-gradient(135deg, #ff6b9d, #c44f8b);
+            color: white;
+        }
+        .btn-pink:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .heart-float {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: floatUp linear forwards;
+            opacity: 0.7;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity: 0.8; }
+            100% { transform: translateY(-10vh) rotate(720deg) scale(1.2); opacity: 0; }
+        }
+
+        .counter {
+            margin-top: 15px;
+            color: #6c3483;
+            font-size: 0.95rem;
+            background: rgba(248, 187, 208, 0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        @media (max-width: 480px) {
+            .card { padding: 25px 18px; }
+            h1 { font-size: 1.7rem; }
+            .message-box { font-size: 1rem; padding: 20px 15px; }
+            .btn { padding: 10px 20px; font-size: 0.9rem; }
+        }
+    </style>
 </head>
 <body>
-<p>It works!</p>
+
+    <!-- Floating Hearts Container -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Main Card -->
+    <div class="card">
+        <div class="heart-bg">❤️</div>
+
+        <h1>💖 Untuk Kamu 💖</h1>
+        <div class="subtitle">— yang selalu ada di hatiku —</div>
+
+        <div class="message-box" id="messageDisplay">
+            Klik tombol di bawah untuk tahu isi hatiku ❤️
+        </div>
+
+        <div class="btn-container">
+            <button class="btn btn-primary" id="btnSayang">💕 Pesan Cinta</button>
+            <button class="btn btn-pink" id="btnRandom">💗 Kejutan</button>
+            <button class="btn btn-secondary" id="btnHearts">🎈 Hujan Hati</button>
+        </div>
+
+        <div class="counter" id="counterDisplay">❤️ 0 kali kamu membuatku tersenyum</div>
+    </div>
+
+    <script>
+        // ===== DAFTAR PESAN BUCIN =====
+        const messages = [
+            "Aku gak tahu harus bilang apa, tapi yang pasti... aku suka kamu. 💕",
+            "Kalau kamu adalah bintang, aku rela jadi langit yang selalu menaungimu. 🌟",
+            "Setiap kali lihat kamu, hatiku berhenti sejenak... lalu berdegup kencang. 💓",
+            "Kamu itu seperti kopi, pahit tapi aku selalu ingin lagi. ☕💕",
+            "Aku bukan siapa-siapa, tapi aku ingin jadi 'siapa-siapa' di hatimu. 😊",
+            "Tau gak kenapa aku suka senyum? Karena kamu ada di pikiranku. 😁",
+            "Aku cuma orang biasa, tapi cintaku ke kamu luar biasa. 💖",
+            "Kalau cinta itu buta, aku rela buta selamanya asal kamu di sampingku. 🥰",
+            "Aku bukan pujangga, tapi setiap kata yang kutulis selalu tentang kamu. 📝",
+            "Kamu tuh kayak WiFi... aku selalu nyari sinyalnya, dan gak mau putus. 📶😍",
+            "Aku mau jadi alasan kamu tersenyum setiap hari. ☀️",
+            "Cintaku ke kamu gak perlu kata-kata, tapi kalau dipaksa... aku sayang kamu! 😘",
+            "Kamu itu inspirasiku, bahkan untuk hal-hal kecil sekalipun. ✨",
+            "Aku gak pernah peduli sama orang lain, karena cuma kamu yang aku perhatikan. 🫣",
+            "Aku mau jadi orang terakhir yang kamu ingat sebelum tidur, dan pertama yang kamu pikirkan saat bangun. 🌙☀️"
+        ];
+
+        let clickCount = 0;
+        const messageDisplay = document.getElementById('messageDisplay');
+        const counterDisplay = document.getElementById('counterDisplay');
+        const floatingHearts = document.getElementById('floatingHearts');
+
+        // Update counter
+        function updateCounter() {
+            counterDisplay.textContent = `❤️ ${clickCount} kali kamu membuatku tersenyum`;
+        }
+
+        // Tampilkan pesan
+        function showMessage(msg) {
+            messageDisplay.style.transform = 'scale(0.9)';
+            messageDisplay.style.opacity = '0.7';
+            setTimeout(() => {
+                messageDisplay.textContent = msg;
+                messageDisplay.style.transform = 'scale(1)';
+                messageDisplay.style.opacity = '1';
+            }, 150);
+        }
+
+        // Random pesan
+        function getRandomMessage() {
+            return messages[Math.floor(Math.random() * messages.length)];
+        }
+
+        // Buat floating hearts
+        function createFloatingHearts(count = 8) {
+            const emojis = ['❤️', '💕', '💗', '💖', '💘', '💝', '✨', '🌸'];
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-float';
+                heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.fontSize = (Math.random() * 1.8 + 1) + 'rem';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                heart.style.animationDelay = (Math.random() * 1.5) + 's';
+                floatingHearts.appendChild(heart);
+
+                // Hapus setelah animasi selesai
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+            }
+        }
+
+        // Event: Tombol Pesan Cinta
+        document.getElementById('btnSayang').addEventListener('click', function() {
+            const msg = getRandomMessage();
+            showMessage(msg);
+            clickCount++;
+            updateCounter();
+            createFloatingHearts(5);
+        });
+
+        // Event: Tombol Kejutan (tampilkan pesan spesial)
+        document.getElementById('btnRandom').addEventListener('click', function() {
+            const specialMessages = [
+                "💖 KAMU ISTIMEWA! 💖",
+                "Aku gak bisa berhenti memikirkan kamu... 😳",
+                "Kalau kamu mau, aku akan selalu ada untukmu. 🤗",
+                "Kamu tuh bikin hari-hariku berwarna! 🌈",
+                "Aku jatuh cinta sama senyummu, ketawamu, dan semua tentangmu. 🥰"
+            ];
+            const msg = specialMessages[Math.floor(Math.random() * specialMessages.length)];
+            showMessage(msg);
+            clickCount += 2;
+            updateCounter();
+            createFloatingHearts(10);
+        });
+
+        // Event: Tombol Hujan Hati
+        document.getElementById('btnHearts').addEventListener('click', function() {
+            showMessage('💕 Hujan hati untukmu! Semoga kamu tersenyum. 💕');
+            createFloatingHearts(20);
+            clickCount++;
+            updateCounter();
+        });
+
+        // Auto floating hearts setiap 10 detik (suasana romantis)
+        setInterval(() => {
+            if (document.visibilityState === 'visible') {
+                createFloatingHearts(3);
+            }
+        }, 8000);
+
+        // Inisialisasi counter
+        updateCounter();
+
+        // Efek hover pada card
+        document.querySelector('.card').addEventListener('mouseenter', function() {
+            this.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+        });
+
+        console.log('💕 Untuk kamu yang spesial! Jangan lupa tersenyum hari ini. 💕');
+    </script>
 </body>
 </html>
