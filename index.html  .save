@@ -1,0 +1,19 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Website Termux Saya</title>
+</head>
+<body>
+    <h1>Halo Dunia! Website ini berjalan di Termux Android.</h1>
+</body>
+</html>
+ 
+<html>
+<head>
+<title>It works! Apache httpd</title>
+</head>
+<body>
+<p>It works!</p>
+</body>
+</html>
