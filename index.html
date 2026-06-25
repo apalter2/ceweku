@@ -125,6 +125,7 @@
             z-index: 2;
             border: 2px solid rgba(255,255,255,0.25);
             animation: fadeIn 0.9s ease-out;
+            transition: all 0.4s ease;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.85) rotate(-2deg); }
@@ -291,6 +292,25 @@
         }
         .btn-bucin-no:active {
             transform: scale(0.95);
+        }
+
+        /* Tombol lanjut (Next) */
+        .btn-next {
+            background: linear-gradient(135deg, #a18cd1, #6c3483);
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 18px 0 10px;
+            box-shadow: 0 8px 30px rgba(108,52,131,0.3);
+        }
+        .btn-next:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(108,52,131,0.5);
         }
 
         /* Telegram */
@@ -461,6 +481,10 @@
             object-fit: contain;
         }
 
+        /* Hide/Show */
+        .hidden { display: none !important; }
+        .stage { transition: all 0.4s ease; }
+
         @media (max-width: 480px) {
             .card { padding: 22px 16px; }
             h1 { font-size: 1.8rem; }
@@ -509,41 +533,50 @@
     </div>
 
     <!-- MAIN CARD -->
-    <div class="card">
+    <div class="card" id="mainCard">
         <div class="heart-bg">❤️</div>
-        <h1>💖 Bucin Level Max 💖</h1>
-        <div class="subtitle">— khusus untuk kamu yang selalu di hati —</div>
+        <h1 id="mainTitle">💖 Bucin Level Max 💖</h1>
+        <div class="subtitle" id="mainSubtitle">— khusus untuk kamu yang selalu di hati —</div>
 
         <div class="message-box" id="messageDisplay">
-            <span>Klik tombol di bawah, atau jawab pertanyaanku 😉</span>
+            <span id="messageText">Halo, selamat datang! 💕</span>
         </div>
 
-        <!-- Tombol Bucin YES / NO -->
-        <div class="bucin-group">
-            <button class="btn-bucin btn-bucin-yes" id="btnYes">💕 Iya, Sayang!</button>
-            <button class="btn-bucin btn-bucin-no" id="btnNo">😅 Tidak</button>
+        <!-- STAGE 1: Sambutan & Tombol Lanjut -->
+        <div id="stageWelcome" class="stage">
+            <button class="btn-next" id="btnNext">Lanjut ➜</button>
         </div>
 
-        <!-- Kumpulan Tombol Gombal -->
-        <div class="btn-container">
-            <button class="btn btn-pink" id="btnSayang">💕 Cinta</button>
-            <button class="btn btn-purple" id="btnRindu">🌙 Rindu</button>
-            <button class="btn btn-red" id="btnKejutan">🎁 Kejutan</button>
-            <button class="btn btn-orange" id="btnLucu">😄 Lucu</button>
-            <button class="btn btn-green" id="btnHujan">💗 Hujan Hati</button>
-            <button class="btn btn-blue" id="btnGalau">😅 Galau</button>
-            <button class="btn btn-yellow" id="btnPujian">🌟 Pujian</button>
-            <button class="btn btn-teal" id="btnImut">🥰 Imut</button>
-            <button class="btn btn-coral" id="btnRandom">✨ Random</button>
+        <!-- STAGE 2: Pertanyaan Bucin (YES / NO) -->
+        <div id="stageQuestion" class="stage hidden">
+            <div class="bucin-group">
+                <button class="btn-bucin btn-bucin-yes" id="btnYes">💕 Iya, Sayang!</button>
+                <button class="btn-bucin btn-bucin-no" id="btnNo">😅 Tidak</button>
+            </div>
         </div>
 
-        <!-- Telegram -->
-        <button class="btn-telegram" id="btnTelegram">
-            <span>✈️</span> Cheated by @lyzvldx
-            <span class="credit-text">• Kirim Cinta 💕</span>
-        </button>
+        <!-- STAGE 3: Semua Tombol Gombal & Telegram (muncul setelah jawab) -->
+        <div id="stageAllButtons" class="stage hidden">
+            <div class="btn-container">
+                <button class="btn btn-pink" id="btnSayang">💕 Cinta</button>
+                <button class="btn btn-purple" id="btnRindu">🌙 Rindu</button>
+                <button class="btn btn-red" id="btnKejutan">🎁 Kejutan</button>
+                <button class="btn btn-orange" id="btnLucu">😄 Lucu</button>
+                <button class="btn btn-green" id="btnHujan">💗 Hujan Hati</button>
+                <button class="btn btn-blue" id="btnGalau">😅 Galau</button>
+                <button class="btn btn-yellow" id="btnPujian">🌟 Pujian</button>
+                <button class="btn btn-teal" id="btnImut">🥰 Imut</button>
+                <button class="btn btn-coral" id="btnRandom">✨ Random</button>
+            </div>
 
-        <div class="counter" id="counterDisplay">❤️ 0 kali kamu membuatku tersenyum</div>
+            <!-- Telegram -->
+            <button class="btn-telegram" id="btnTelegram">
+                <span>✈️</span> Cheated by @lyzvldx
+                <span class="credit-text">• Kirim Cinta 💕</span>
+            </button>
+
+            <div class="counter" id="counterDisplay">❤️ 0 kali kamu membuatku tersenyum</div>
+        </div>
     </div>
 
     <!-- Audio -->
@@ -591,10 +624,8 @@
         });
 
         // ============================================================
-        //  STICKER BASE64 (contoh sticker bucin & cinta)
+        //  STICKER
         // ============================================================
-        // Sticker "Sayang Banget" (emoji based, kita pakai emoji besar + background)
-        // Tapi kita juga bisa pakai gambar SVG/data URL kecil. Kita pakai emoji besar.
         const STICKER_SAYANG = '🥰💕';
         const STICKER_BUCIN = '😍💖';
         const STICKER_YES = '💖😘';
@@ -657,11 +688,7 @@
                 "Aku bukan pujangga, tapi setiap kata yang kutulis selalu tentang kamu. 📝",
                 "Aku mau jadi alasan kamu tersenyum setiap hari. ☀️",
                 "Cintaku ke kamu gak perlu kata-kata, tapi kalau dipaksa... aku sayang kamu! 😘",
-                "Kamu itu inspirasiku, bahkan untuk hal-hal kecil sekalipun. ✨",
-                "Aku gak pernah peduli sama orang lain, karena cuma kamu yang aku perhatikan. 🫣",
-                "Aku mau jadi orang terakhir yang kamu ingat sebelum tidur, dan pertama yang kamu pikirkan saat bangun. 🌙☀️",
-                "Kalau aku jadi pelangi, kamu adalah matahari yang membuatku bersinar. 🌈",
-                "Aku gak butuh alasan buat sayang kamu, karena kamu sudah jadi alasannya. 💕"
+                "Kamu itu inspirasiku, bahkan untuk hal-hal kecil sekalipun. ✨"
             ],
             rindu: [
                 "Kangen banget sama kamu, padahal baru 5 menit yang lalu kita chat. 😂",
@@ -723,31 +750,37 @@
         // ============================================================
         let clickCount = 0;
         const messageDisplay = document.getElementById('messageDisplay');
+        const messageText = document.getElementById('messageText');
         const counterDisplay = document.getElementById('counterDisplay');
         const floatingHearts = document.getElementById('floatingHearts');
+
+        // Stage elements
+        const stageWelcome = document.getElementById('stageWelcome');
+        const stageQuestion = document.getElementById('stageQuestion');
+        const stageAllButtons = document.getElementById('stageAllButtons');
+        const btnNext = document.getElementById('btnNext');
 
         function updateCounter() {
             counterDisplay.textContent = `❤️ ${clickCount} kali kamu membuatku tersenyum`;
         }
 
-        // Menampilkan pesan + optional sticker di tengah
+        // Menampilkan pesan
         function showMessage(msg, sticker = null) {
-            // Kosongkan dulu
-            messageDisplay.innerHTML = '';
-            // Jika ada sticker, buat elemen gambar/emoji besar di tengah
+            messageText.textContent = msg;
+            // Reset sticker
+            const existingSticker = messageDisplay.querySelector('.sticker-center');
+            if (existingSticker) existingSticker.remove();
+
             if (sticker) {
                 const stickerSpan = document.createElement('div');
+                stickerSpan.className = 'sticker-center';
                 stickerSpan.style.fontSize = '3.6rem';
                 stickerSpan.style.lineHeight = '1.2';
                 stickerSpan.style.textAlign = 'center';
                 stickerSpan.textContent = sticker;
-                messageDisplay.appendChild(stickerSpan);
+                // Masukkan di atas teks
+                messageDisplay.insertBefore(stickerSpan, messageText);
             }
-            const textSpan = document.createElement('div');
-            textSpan.textContent = msg;
-            textSpan.style.marginTop = sticker ? '6px' : '0';
-            textSpan.style.width = '100%';
-            messageDisplay.appendChild(textSpan);
 
             // Animasi
             messageDisplay.style.transform = 'scale(0.92)';
@@ -767,7 +800,7 @@
         function createSparkles() {
             const emojis = ['✨', '⭐', '💫', '🌟', '❤️', '💕', '🌸', '💖'];
             const box = messageDisplay;
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 6; i++) {
                 const sp = document.createElement('div');
                 sp.className = 'sparkle';
                 sp.textContent = emojis[Math.floor(Math.random() * emojis.length)];
@@ -814,25 +847,51 @@
         createParticles();
 
         // ============================================================
-        //  EVENT HANDLER UNTUK TOMBOL
+        //  STAGE MANAGEMENT
         // ============================================================
+        function goToStage(stageName) {
+            stageWelcome.classList.add('hidden');
+            stageQuestion.classList.add('hidden');
+            stageAllButtons.classList.add('hidden');
+            if (stageName === 'welcome') stageWelcome.classList.remove('hidden');
+            else if (stageName === 'question') stageQuestion.classList.remove('hidden');
+            else if (stageName === 'all') stageAllButtons.classList.remove('hidden');
+        }
+
+        // ============================================================
+        //  EVENT HANDLER
+        // ============================================================
+
+        // --- Tombol Lanjut (Welcome → Question) ---
+        btnNext.addEventListener('click', function() {
+            goToStage('question');
+            showMessage('Aku mau tanya sesuatu...', '💌');
+            createFloatingHearts(8);
+            // Ubah subtitle sedikit
+            document.getElementById('mainSubtitle').textContent = '— jawab dengan jujur ya —';
+        });
 
         // --- YES / NO Bucin ---
         document.getElementById('btnYes').addEventListener('click', function() {
+            goToStage('all');
             const msg = 'Aku juga sayang banget sama kamu! 💖💕';
             showMessage(msg, STICKER_YES);
             clickCount += 2;
             updateCounter();
             createFloatingHearts(20, '💖');
+            document.getElementById('mainSubtitle').textContent = '— sekarang pilih tombol di bawah —';
+            document.getElementById('mainTitle').textContent = '💕 Bucin Level Max 💕';
         });
 
         document.getElementById('btnNo').addEventListener('click', function() {
-            // Tolak user, tetap paksa bilang sayang banget + sticker
+            goToStage('all');
             const msg = 'Kamu bohong! Pasti kamu sayang banget sama aku! 😘💕';
             showMessage(msg, STICKER_NO);
             clickCount += 1;
             updateCounter();
             createFloatingHearts(12, '😅');
+            document.getElementById('mainSubtitle').textContent = '— sekarang pilih tombol di bawah —';
+            document.getElementById('mainTitle').textContent = '💕 Bucin Level Max 💕';
         });
 
         // --- Tombol Gombal ---
@@ -906,6 +965,9 @@
         // Inisialisasi
         updateCounter();
         tryAutoPlay();
+        // Tampilkan stage welcome
+        goToStage('welcome');
+        showMessage('Halo! Selamat datang di dunia bucin. 😊💕', '👋');
 
         console.log('💕 Bucin Level Max! Buat yang tersayang 💕');
         console.log('✈️ Cheated by @lyzvldx');
