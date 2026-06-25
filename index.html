@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
+    /* ============================================================
+       STYLE LENGKAP (SAMA SEPERTI SEBELUMNYA)
+       ============================================================ */
     * {
       margin: 0;
       padding: 0;
@@ -862,6 +865,7 @@
       background: #fce4ec;
     }
 
+    /* NOTIFICATION POPUP UTAMA */
     .notification-popup {
       position: fixed;
       top: 50%;
@@ -988,11 +992,11 @@
     </video>
   </div>
 
-  <!-- Notification Popup -->
+  <!-- Notification Popup Utama -->
   <div class="notification-popup" id="notificationPopup">
-    <div class="notif-icon">😢</div>
-    <h2>Berarti kamu gak sayang aku ya</h2>
-    <p>Sheila, aku sedih banget kalau kamu gak sayang aku...<br>Tapi aku tetap akan sayang kamu selamanya! 💕</p>
+    <div class="notif-icon" id="notifIcon">😢</div>
+    <h2 id="notifTitle">Berarti kamu gak sayang aku ya</h2>
+    <p id="notifMessage">Sheila, aku sedih banget kalau kamu gak sayang aku...<br>Tapi aku tetap akan sayang kamu selamanya! 💕</p>
     <button class="notif-btn" id="notifBtn">😊 Aku cuma bercanda, aku sayang kok!</button>
   </div>
 
@@ -1101,9 +1105,7 @@
         <button class="btn btn-mint" id="btnKangen">💕 Kangen</button>
       </div>
 
-      <!-- ============================================================ -->
-      <!-- 🔥 KATEGORI JEBATAN (CLICKBAIT CINTA) 1-15 -->
-      <!-- ============================================================ -->
+      <!-- 🔥 KATEGORI JEBATAN -->
       <div class="hyperlink-category">
         <h3>🔥 Clickbait Cinta</h3>
         <div class="hyperlink-grid">
@@ -1125,9 +1127,7 @@
         </div>
       </div>
 
-      <!-- ============================================================ -->
-      <!-- 🎁 KATEGORI KEJUTAN (REDIRECT ROMANTIS) 16-30 -->
-      <!-- ============================================================ -->
+      <!-- 🎁 KATEGORI KEJUTAN -->
       <div class="hyperlink-category">
         <h3>🎁 Kejutan Romantis</h3>
         <div class="hyperlink-grid">
@@ -1149,9 +1149,7 @@
         </div>
       </div>
 
-      <!-- ============================================================ -->
-      <!-- ⏰ KATEGORI COUNTDOWN & WAKTU 31-40 -->
-      <!-- ============================================================ -->
+      <!-- ⏰ KATEGORI COUNTDOWN -->
       <div class="hyperlink-category">
         <h3>⏰ Countdown & Waktu</h3>
         <div class="countdown-item">
@@ -1177,9 +1175,7 @@
         </div>
       </div>
 
-      <!-- ============================================================ -->
-      <!-- 🤔 KATEGORI PILIHAN (DECISION MAKER) 41-50 -->
-      <!-- ============================================================ -->
+      <!-- 🤔 KATEGORI PILIHAN -->
       <div class="hyperlink-category">
         <h3>🤔 Pilihan</h3>
         <div class="hyperlink-grid">
@@ -1196,9 +1192,7 @@
         </div>
       </div>
 
-      <!-- ============================================================ -->
-      <!-- 🔐 KATEGORI PASSWORD & TEKA-TEKI 51-60 -->
-      <!-- ============================================================ -->
+      <!-- 🔐 KATEGORI PASSWORD -->
       <div class="hyperlink-category">
         <h3>🔐 Password & Teka-teki</h3>
         <div class="hyperlink-grid">
@@ -1215,9 +1209,7 @@
         </div>
       </div>
 
-      <!-- ============================================================ -->
-      <!-- 🌪️ KATEGORI LEVEL GILA (SUPER BU CIN) 61-70 -->
-      <!-- ============================================================ -->
+      <!-- 🌪️ KATEGORI LEVEL GILA -->
       <div class="hyperlink-category">
         <h3>🌪️ Level Gila</h3>
         <div class="hyperlink-grid">
@@ -1234,9 +1226,7 @@
         </div>
       </div>
 
-      <!-- ============================================================ -->
-      <!-- 🛠️ KATEGORI EKSTRA 71-75 -->
-      <!-- ============================================================ -->
+      <!-- 🛠️ KATEGORI EKSTRA -->
       <div class="hyperlink-category">
         <h3>🛠️ Bonus Ekstra</h3>
         <div class="hyperlink-grid">
@@ -1248,17 +1238,13 @@
         </div>
       </div>
 
-      <!-- ============================================================ -->
-      <!-- ALASAN CINTA (Anchor Link) -->
-      <!-- ============================================================ -->
+      <!-- ALASAN CINTA -->
       <div id="alasanCinta" class="section-scroll">
         <h2>💕 100 Alasan Aku Sayang Kamu</h2>
         <ul class="alasan-list" id="alasanList"></ul>
       </div>
 
-      <!-- ============================================================ -->
-      <!-- BUCKET LIST (Anchor Link) -->
-      <!-- ============================================================ -->
+      <!-- BUCKET LIST -->
       <div id="bucketList" class="section-scroll">
         <h2>🎯 Bucket List Kita</h2>
         <div class="bucket-list">
@@ -1281,22 +1267,18 @@
         </div>
       </div>
 
-      <!-- ============================================================ -->
-      <!-- FOTO INTERAKTIF (Anchor Link) -->
-      <!-- ============================================================ -->
+      <!-- FOTO INTERAKTIF -->
       <div id="interactivePhoto" class="section-scroll">
         <h2>📸 Klik Foto untuk Kejutan</h2>
         <div class="interactive-photo">
           <img src="https://files.catbox.moe/okvdda.jpg" alt="Foto Sheila" style="max-width:280px;">
           <div class="photo-hotspot eye" title="Klik mata Sheila" onclick="showGaleri()">👁️</div>
           <div class="photo-hotspot hand" title="Klik tangan Sheila" onclick="gandenganVirtual()">🤝</div>
-          <div class="photo-hotspot cheek" title="Klik pipi Sheila" onclick="showMessage('💕 Pipi Sheila gemes banget! 🥰', getRandomSticker())">💋</div>
+          <div class="photo-hotspot cheek" title="Klik pipi Sheila" onclick="showNotificationWith('💕 Pipi Sheila gemes banget! 🥰', '🥰', 'Pipi Gemes!')">💋</div>
         </div>
       </div>
 
-      <!-- ============================================================ -->
       <!-- EASTER EGG -->
-      <!-- ============================================================ -->
       <div style="margin:8px 0;">
         <span class="easter-egg" id="easterEgg" title="Klik untuk kejutan!">⭐</span>
         <span style="color:#aaa; font-size:0.75rem;">(klik bintang untuk kejutan!)</span>
@@ -1315,9 +1297,7 @@
         </div>
       </div>
 
-      <!-- ============================================================ -->
       <!-- MOOD TRACKER -->
-      <!-- ============================================================ -->
       <div style="margin:10px 0;">
         <p style="color:#6c3483; font-weight:600; font-size:0.85rem; font-family:'Quicksand',sans-serif;">💭 Bagaimana perasaanmu hari ini?</p>
         <div class="mood-tracker">
@@ -1329,9 +1309,7 @@
         </div>
       </div>
 
-      <!-- ============================================================ -->
       <!-- QUIZ & TELEGRAM -->
-      <!-- ============================================================ -->
       <button class="btn btn-purple" id="btnQuiz" style="margin:6px 0;">💕 Kuis Cinta untuk Sheila</button>
 
       <button class="btn-telegram" id="btnTelegram">
@@ -1349,6 +1327,44 @@
   </audio>
 
   <script>
+    // ============================================================
+    //  FUNGSI NOTIFIKASI POP-UP YANG DIPERBAIKI
+    // ============================================================
+    function showNotificationWith(message, icon = '💕', title = 'Notifikasi Cinta 💕') {
+      const popup = document.getElementById('notificationPopup');
+      document.getElementById('notifIcon').textContent = icon;
+      document.getElementById('notifTitle').textContent = title;
+      document.getElementById('notifMessage').innerHTML = message;
+      popup.classList.add('active');
+      createFloatingHearts(15);
+    }
+
+    // Override untuk notifikasi standar (digunakan oleh tombol NO)
+    function showNotification() {
+      showNotificationWith(
+        'Sheila, aku sedih banget kalau kamu gak sayang aku...<br>Tapi aku tetap akan sayang kamu selamanya! 💕',
+        '😢',
+        'Berarti kamu gak sayang aku ya'
+      );
+    }
+
+    function hideNotification() {
+      document.getElementById('notificationPopup').classList.remove('active');
+    }
+
+    document.getElementById('notifBtn').addEventListener('click', function() {
+      hideNotification();
+      showMessage('💕 Aku tahu kamu sayang aku kok! 😊💕', getRandomSticker());
+      createFloatingHearts(20, '💖');
+      clickCount += 2;
+      updateCounter();
+    });
+
+    // Klik di luar notifikasi untuk menutup
+    document.getElementById('notificationPopup').addEventListener('click', function(e) {
+      if (e.target === this) hideNotification();
+    });
+
     // ============================================================
     //  AUTO PLAY AUDIO & VIDEO
     // ============================================================
@@ -1410,10 +1426,9 @@
     }
 
     // ============================================================
-    //  HYPERLINK DATA - SEMUA 75 HYPERLINK
+    //  HYPERLINK DATA
     // ============================================================
     const hyperlinkData = {
-      // JEBATAN 1-15
       jebatan1: { msg: 'Berani? Berarti kamu siap tanggung jawab sama aku. 💕', emoji: '😤' },
       jebatan2: { msg: 'Kaya cinta kamu yang gak ada habisnya. 💰💕', emoji: '💎' },
       jebatan3: { msg: 'Caranya? Pacaran sama aku, ketawa terus. 😄💕', emoji: '✨' },
@@ -1430,8 +1445,7 @@
       jebatan14: { msg: 'Pendaftaran jadi milik aku, udah kamu tandatangan. ✍️💕', emoji: '📄' },
       jebatan15: { msg: 'Kaya? Udah, aku udah kaya punya kamu. 💎💕', emoji: '🤲' },
 
-      // KEJUTAN 16-30
-      kejutan16: { msg: '🎵 Ini playlist lagu kita berdua! Klik link di bawah ya 💕', emoji: '🎵', link: 'https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M' },
+      kejutan16: { msg: '🎵 Ini playlist lagu kita berdua! 💕', emoji: '🎵', link: 'https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M' },
       kejutan17: { msg: '📸 Ini foto kita berdua yang dipajang! 💕', emoji: '🖼️' },
       kejutan18: { msg: '💌 Ini puisi cinta panjang untuk kamu, Sheila 💕', emoji: '📝' },
       kejutan19: { msg: '📍 Ini map ke tempat pertama kali kita ketemu! 💕', emoji: '🗺️' },
@@ -1447,7 +1461,6 @@
       kejutan29: { msg: '📖 Cari kata "Bucin" = definisinya foto kamu. 💕', emoji: '📖' },
       kejutan30: { msg: '📱 Isinya pesan palsu: "Aku kangen kamu, tolong balas." 💕', emoji: '💬' },
 
-      // WAKTU 34-40 (31-33 countdown)
       waktu34: { msg: '⏱️ 5 detik! Habis itu muncul "Kamu baru aja buang waktu, tapi gak papa buat kamu." 💕', emoji: '⏱️' },
       waktu35: { msg: '🔟 9 8 7 6 5 4 3 2 1... 💥 LEDAKAN CINTA! 💕', emoji: '💥' },
       waktu36: { msg: '🕐 Jam digital: angkanya diganti "KAMU" semua. 💕', emoji: '🕐' },
@@ -1456,7 +1469,6 @@
       waktu39: { msg: '⏳ Countdown ketemu: "Semoga cepet ya!" 💕', emoji: '⏳' },
       waktu40: { msg: '⏰ Timer 3 detik: "Kamu telat baca, tapi hati aku gak pernah telat buat kamu." 💕', emoji: '⏰' },
 
-      // PILIHAN 41-50
       pilihan41: { msg: '🤔 A: Kamu sayang aku, B: Kamu juga sayang aku. Hasilnya sama! 💕', emoji: '🤔' },
       pilihan42: { msg: '🔢 Apapun angkanya, hasilnya "KAMU NOMOR 1 DI HATIKU." 💕', emoji: '🔢' },
       pilihan43: { msg: '🎨 Merah = cinta, Biru = rindu, Hijau = aku mau kamu. 💕', emoji: '🎨' },
@@ -1468,7 +1480,6 @@
       pilihan49: { msg: '✈️ Semua pilihan ujungnya "Yang penting sama kamu." 💕', emoji: '✈️' },
       pilihan50: { msg: '🎁 Apapun hadiahnya, tulisan: "Hadiah terbaik adalah kamu." 💕', emoji: '🎁' },
 
-      // PASSWORD 51-60
       password51: { msg: '🔓 Akses diberikan, selamat kamu istimewa. 💕', emoji: '🔓' },
       password52: { msg: '🔐 Salah? Masa lupa sih? Coba lagi sayang! 💕', emoji: '🔐' },
       password53: { msg: '🗝️ "Kamu adalah jawaban dari semua sandi." 💕', emoji: '🗝️' },
@@ -1480,7 +1491,6 @@
       password59: { msg: '🎉 Kamu lulus, sekarang kamu resmi jadi pemilik hatiku. 💕', emoji: '🎉' },
       password60: { msg: '😊 "Kamu juga ternyata bucin ya?" 💕', emoji: '😊' },
 
-      // GILA 61-70
       gila61: { msg: '📱 Gak usah hack, minta aja PIN-ku: tanggal lahir kamu. 💕', emoji: '📱' },
       gila62: { msg: '💼 Posisi: "Pacar tetap", Gaji: "Cinta seumur hidup." 💕', emoji: '💼' },
       gila63: { msg: '🏷️ Diskon 100% buat hatiku, khusus kamu. 💕', emoji: '🏷️' },
@@ -1492,7 +1502,6 @@
       gila69: { msg: '😊 Tips: Balas chat aku. 💕', emoji: '😊' },
       gila70: { msg: '🌙 Semoga mimpi kamu hari ini bareng aku. 💕', emoji: '🌙' },
 
-      // EKSTRA 71-75
       ekstra71: { msg: '📋 Aku mengadu, hatiku dicuri sama kamu. 💕', emoji: '📋' },
       ekstra72: { msg: '💪 Gym? Mending peluk aku, lebih berat beban cinta. 💕', emoji: '💪' },
       ekstra73: { msg: '🔮 Hari ini kamu bakal dikirimin pesan cinta dari aku. 💕', emoji: '🔮' },
@@ -1715,26 +1724,6 @@
     const stageAllButtons = document.getElementById('stageAllButtons');
     const btnNext = document.getElementById('btnNext');
 
-    const notificationPopup = document.getElementById('notificationPopup');
-    const notifBtn = document.getElementById('notifBtn');
-
-    function showNotification() {
-      notificationPopup.classList.add('active');
-      createFloatingHearts(15, '😢');
-    }
-
-    function hideNotification() {
-      notificationPopup.classList.remove('active');
-    }
-
-    notifBtn.addEventListener('click', function() {
-      hideNotification();
-      showMessage('💕 Aku tahu kamu sayang aku kok! 😊💕', getRandomSticker());
-      createFloatingHearts(20, '💖');
-      clickCount += 2;
-      updateCounter();
-    });
-
     function updateCounter() {
       counterDisplay.textContent = `❤️ ${clickCount} kali kamu membuatku tersenyum`;
     }
@@ -1884,7 +1873,7 @@
     });
 
     // ============================================================
-    //  BUCKET LIST FUNCTIONS
+    //  BUCKET LIST FUNCTIONS (dengan notifikasi pop-up)
     // ============================================================
     function showBucketDetail(place) {
       const details = {
@@ -1893,26 +1882,38 @@
         'Eropa': '🗼 Jalan-jalan ke Eropa: Mengunjungi Paris, Roma, dan Amsterdam bersama cinta! 💖',
         'Konser': '🎤 Nonton Konser Bareng: Bernyanyi dan menikmati musik favorit bersama! 🎵'
       };
-      showMessage(details[place] || `✨ ${place} akan kita kunjungi bersama!`, getRandomSticker());
+      const msg = details[place] || `✨ ${place} akan kita kunjungi bersama!`;
+      showNotificationWith(msg, '🎯', `Bucket List: ${place}`);
+      showMessage(msg, getRandomSticker());
       createFloatingHearts(10);
       clickCount += 2;
       updateCounter();
     }
 
     // ============================================================
-    //  FOTO INTERAKTIF FUNCTIONS
+    //  FOTO INTERAKTIF FUNCTIONS (dengan notifikasi pop-up)
     // ============================================================
     function showGaleri() {
+      showNotificationWith(
+        '👁️ Mata Sheila seindah bintang! 💕<br>Klik OK untuk melihat koleksi foto romantis!',
+        '✨',
+        'Mata Seindah Bintang'
+      );
       showMessage('👁️ Mata Sheila seindah bintang! 💕', getRandomSticker());
       setTimeout(() => {
         window.open('https://unsplash.com/collections/1294747/romantic-couple', '_blank');
-      }, 800);
+      }, 1200);
       createFloatingHearts(12, '✨');
       clickCount += 2;
       updateCounter();
     }
 
     function gandenganVirtual() {
+      showNotificationWith(
+        '🤝 GANDENGAN TANGAN VIRTUAL!<br>Aku memegang tanganmu Sheila... 💕<br>Rasakan hangatnya cinta ini!',
+        '💕',
+        'Gandengan Virtual 💕'
+      );
       showMessage('🤝 GANDENGAN TANGAN VIRTUAL! Aku memegang tanganmu Sheila... 💕', getRandomSticker());
       createFloatingHearts(15, '💕');
       clickCount += 3;
@@ -1923,23 +1924,33 @@
     }
 
     // ============================================================
-    //  EASTER EGG
+    //  EASTER EGG (dengan notifikasi pop-up)
     // ============================================================
     document.getElementById('easterEgg').addEventListener('click', function() {
       const letter = document.getElementById('secretLetter');
       letter.classList.toggle('show');
       if (letter.classList.contains('show')) {
+        showNotificationWith(
+          '💌 Surat cinta rahasia terbuka!<br>Baca surat cinta di bawah ini ya Sheila 💕',
+          '💌',
+          'Surat Cinta Rahasia'
+        );
         showMessage('💌 Surat cinta rahasia terbuka! Baca di bawah ya Sheila 💕', '💌');
         createFloatingHearts(20, '💖');
         clickCount += 5;
         updateCounter();
       } else {
+        showNotificationWith(
+          '💕 Surat cinta disembunyikan lagi...<br>Klik bintangnya kapan saja untuk membacanya!',
+          '⭐',
+          'Surat Tersembunyi'
+        );
         showMessage('💕 Surat cinta disembunyikan lagi...', '💕');
       }
     });
 
     // ============================================================
-    //  HYPERLINK HANDLER - SEMUA 75 HYPERLINK
+    //  HYPERLINK HANDLER - DENGAN NOTIFIKASI POP-UP
     // ============================================================
     document.querySelectorAll('[data-hyperlink]').forEach(link => {
       link.addEventListener('click', function(e) {
@@ -1947,12 +1958,17 @@
         const key = this.dataset.hyperlink;
         const data = hyperlinkData[key];
         if (data) {
-          // Jika ada link khusus
+          // Tampilkan notifikasi pop-up
+          showNotificationWith(
+            data.msg,
+            data.emoji || '💕',
+            '🔗 Hyperlink Cinta'
+          );
+          // Tampilkan juga di message box
+          showMessage(data.msg, data.emoji || '💕');
+          
           if (data.link) {
             window.open(data.link, '_blank');
-            showMessage(data.msg, data.emoji);
-          } else {
-            showMessage(data.msg, data.emoji);
           }
           clickCount++;
           updateCounter();
@@ -1965,19 +1981,16 @@
     //  COUNTDOWN FUNCTIONS
     // ============================================================
     function updateCountdowns() {
-      // Countdown ke tanggal jadian (contoh: 14 Februari 2025)
       const jadianDate = new Date('2025-02-14');
       const now = new Date();
       const diffJadian = Math.ceil((jadianDate - now) / (1000 * 60 * 60 * 24));
       document.getElementById('countdownJadian').textContent = diffJadian > 0 ? `${diffJadian} hari lagi` : '💕 Hari ini!';
 
-      // Countdown ke ulang tahun Sheila (contoh: 1 Januari)
       const ultahDate = new Date(now.getFullYear(), 0, 1);
       if (ultahDate < now) ultahDate.setFullYear(now.getFullYear() + 1);
       const diffUltah = Math.ceil((ultahDate - now) / (1000 * 60 * 60 * 24));
       document.getElementById('countdownUltah').textContent = diffUltah > 0 ? `${diffUltah} hari lagi` : '🎂 Hari ini!';
 
-      // Countdown ke jam 12 malam
       const midnight = new Date(now);
       midnight.setHours(24, 0, 0, 0);
       const diffMalam = Math.ceil((midnight - now) / (1000 * 60 * 60));
@@ -2000,7 +2013,7 @@
     }
 
     // ============================================================
-    //  EVENT HANDLER
+    //  EVENT HANDLER - SEMUA DENGAN NOTIFIKASI POP-UP
     // ============================================================
 
     // Sticker Gallery
@@ -2014,7 +2027,9 @@
           'Ini sticker favoritku! 💖',
           'Sheila, coba lihat ini! 😊'
         ];
-        showMessage(msgs[Math.floor(Math.random() * msgs.length)], stickerUrl);
+        const msg = msgs[Math.floor(Math.random() * msgs.length)];
+        showNotificationWith(msg, '🎨', 'Sticker Cinta');
+        showMessage(msg, stickerUrl);
         clickCount++;
         updateCounter();
         createFloatingHearts(6);
@@ -2034,7 +2049,16 @@
           excited: 'Sheila excited! Aku juga excited lihat kamu! 🤩',
           calm: 'Sheila tenang... aku juga tenang bersamamu. 😌💕'
         };
-        showMessage(moodMessages[mood] || 'Sheila, kamu luar biasa! 💕');
+        const msg = moodMessages[mood] || 'Sheila, kamu luar biasa! 💕';
+        const moodTitles = {
+          happy: '😊 Happy!',
+          love: '💕 Love!',
+          miss: '🥺 Miss!',
+          excited: '🤩 Excited!',
+          calm: '😌 Calm!'
+        };
+        showNotificationWith(msg, moodTitles[mood] || '💕', 'Mood Hari Ini');
+        showMessage(msg);
         clickCount += 2;
         updateCounter();
         createFloatingHearts(10);
@@ -2044,6 +2068,11 @@
     // --- Tombol Lanjut ---
     btnNext.addEventListener('click', function() {
       goToStage('question');
+      showNotificationWith(
+        'Sheila, aku mau tanya sesuatu...<br>Jawab dengan jujur ya! 💕',
+        '💌',
+        'Pertanyaan Penting'
+      );
       showMessage('Sheila, aku mau tanya sesuatu...', '💌');
       createFloatingHearts(8);
       document.getElementById('mainSubtitle').textContent = '— jawab dengan jujur ya, Sheila —';
@@ -2053,6 +2082,11 @@
     document.getElementById('btnYes').addEventListener('click', function() {
       goToStage('all');
       const msg = 'Sheila sayang aku! Aku juga sayang banget sama Sheila! 💖💕';
+      showNotificationWith(
+        '💖 SHEILA SAYANG AKU! 💖<br>Aku juga sayang banget sama Sheila!<br>Sekarang pilih tombol di bawah ya!',
+        '💖',
+        'YES! 💕'
+      );
       showMessage(msg, getRandomSticker());
       clickCount += 2;
       updateCounter();
@@ -2067,23 +2101,25 @@
       createFloatingHearts(10, '😢');
     });
 
-    // --- Tombol Gombal ---
+    // --- Tombol Gombal dengan Notifikasi ---
     const buttonMap = {
-      btnSayang: { cat: 'cinta', emoji: '💕' },
-      btnRindu: { cat: 'rindu', emoji: '🌙' },
-      btnKejutan: { cat: 'kejutan', emoji: '🎁' },
-      btnLucu: { cat: 'lucu', emoji: '😂' },
-      btnGalau: { cat: 'galau', emoji: '😅' },
-      btnPujian: { cat: 'pujian', emoji: '🌟' },
-      btnImut: { cat: 'imut', emoji: '🥰' },
-      btnBaper: { cat: 'baper', emoji: '🥺' },
-      btnKangen: { cat: 'kangen', emoji: '💕' }
+      btnSayang: { cat: 'cinta', emoji: '💕', title: '💕 Cinta' },
+      btnRindu: { cat: 'rindu', emoji: '🌙', title: '🌙 Rindu' },
+      btnKejutan: { cat: 'kejutan', emoji: '🎁', title: '🎁 Kejutan' },
+      btnLucu: { cat: 'lucu', emoji: '😂', title: '😂 Lucu' },
+      btnGalau: { cat: 'galau', emoji: '😅', title: '😅 Galau' },
+      btnPujian: { cat: 'pujian', emoji: '🌟', title: '🌟 Pujian' },
+      btnImut: { cat: 'imut', emoji: '🥰', title: '🥰 Imut' },
+      btnBaper: { cat: 'baper', emoji: '🥺', title: '🥺 Baper' },
+      btnKangen: { cat: 'kangen', emoji: '💕', title: '💕 Kangen' }
     };
 
     Object.keys(buttonMap).forEach(id => {
       document.getElementById(id).addEventListener('click', function() {
-        const { cat, emoji } = buttonMap[id];
-        showMessage(getRandomMessage(cat), getRandomSticker());
+        const { cat, emoji, title } = buttonMap[id];
+        const msg = getRandomMessage(cat);
+        showNotificationWith(msg, emoji, title);
+        showMessage(msg, getRandomSticker());
         clickCount++;
         updateCounter();
         createFloatingHearts(8);
@@ -2091,7 +2127,9 @@
     });
 
     document.getElementById('btnHujan').addEventListener('click', function() {
-      showMessage('💕 Hujan hati untuk Sheila! Semoga kamu tersenyum. 💕', getRandomSticker());
+      const msg = '💕 Hujan hati untuk Sheila! Semoga kamu tersenyum. 💕';
+      showNotificationWith(msg, '💗', '💗 Hujan Hati');
+      showMessage(msg, getRandomSticker());
       createFloatingHearts(20);
       clickCount++;
       updateCounter();
@@ -2101,13 +2139,16 @@
       const keys = Object.keys(messages);
       const key = keys[Math.floor(Math.random() * keys.length)];
       const msg = getRandomMessage(key);
+      showNotificationWith(msg, '✨', '✨ Random Cinta');
       showMessage(msg, getRandomSticker());
       clickCount++;
       updateCounter();
       createFloatingHearts(10);
     });
 
-    // Auto floating hearts
+    // ============================================================
+    //  AUTO FLOATING HEARTS
+    // ============================================================
     setInterval(() => {
       if (document.visibilityState === 'visible') {
         createFloatingHearts(3);
@@ -2130,7 +2171,9 @@
       });
     });
 
-    // Inisialisasi
+    // ============================================================
+    //  INISIALISASI
+    // ============================================================
     updateCounter();
     tryAutoPlay();
     goToStage('welcome');
@@ -2138,6 +2181,7 @@
 
     console.log('💕 Bucin Level Max untuk Sheila! 💕');
     console.log('✈️ Cheated by @lyzvldx');
+    console.log('💖 Semua fitur menampilkan notifikasi pop-up!');
   </script>
 </body>
-  </html>
+</html>
