@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>💕 Bucin Level Max · Sheila 💕</title>
+  <title>💕</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -1341,11 +1341,15 @@
 
     // Override untuk notifikasi standar (digunakan oleh tombol NO)
     function showNotification() {
-      showNotificationWith(
-        'Sheila, aku sedih banget kalau kamu gak sayang aku...<br>Tapi aku tetap akan sayang kamu selamanya! 💕',
-        '😢',
-        'Berarti kamu gak sayang aku ya'
-      );
+      const messages = [
+        { msg: 'Sheila, aku sedih banget kalau kamu gak sayang aku...<br>Tapi aku tetap akan sayang kamu selamanya! 💕', icon: '😢', title: 'Berarti kamu gak sayang aku ya' },
+        { msg: 'Yakin nih Sheila? Padahal aku sayang banget sama kamu... 💔', icon: '🥺', title: 'Kok gak sayang sih?' },
+        { msg: 'Aku percaya kok kalau sebenarnya kamu sayang aku! 😊💕', icon: '💕', title: 'Kamu pasti bercanda kan?' },
+        { msg: 'Sheila, aku akan selalu sayang kamu walau apapun! 💖', icon: '💖', title: 'Aku tetap sayang kamu' },
+        { msg: 'Kamu bilang gak sayang, tapi hatimu bilang lain kan? 😉💕', icon: '😉', title: 'Cinta diam-diam' }
+      ];
+      const random = messages[Math.floor(Math.random() * messages.length)];
+      showNotificationWith(random.msg, random.icon, random.title);
     }
 
     function hideNotification() {
@@ -1354,7 +1358,14 @@
 
     document.getElementById('notifBtn').addEventListener('click', function() {
       hideNotification();
-      showMessage('💕 Aku tahu kamu sayang aku kok! 😊💕', getRandomSticker());
+      const responses = [
+        '💕 Aku tahu kamu sayang aku kok! 😊💕',
+        '🥰 Aku juga sayang banget sama kamu! 💕',
+        '💖 Kamu bikin aku bahagia! 😊',
+        '😘 Aku cinta kamu lebih! 💕'
+      ];
+      const msg = responses[Math.floor(Math.random() * responses.length)];
+      showMessage(msg, getRandomSticker());
       createFloatingHearts(20, '💖');
       clickCount += 2;
       updateCounter();
@@ -1426,7 +1437,7 @@
     }
 
     // ============================================================
-    //  HYPERLINK DATA
+    //  HYPERLINK DATA (diperkaya dengan variasi)
     // ============================================================
     const hyperlinkData = {
       jebatan1: { msg: 'Berani? Berarti kamu siap tanggung jawab sama aku. 💕', emoji: '😤' },
@@ -1586,15 +1597,27 @@
 
     document.getElementById('btnQuiz').addEventListener('click', showQuiz);
 
+    const quizYesResponses = [
+      '💕 Aku juga sayang banget sama kamu!',
+      '💖 Aku cinta kamu lebih!',
+      '🥰 Kamu bikin aku bahagia!',
+      '😍 Aku suka kamu banget!',
+      '💗 Kamu segalanya untukku!',
+      '😘 Aku cinta kamu, Sheila!'
+    ];
+    const quizNoResponses = [
+      '😅 Bohong! Pasti iya kan?',
+      '🤔 Aku yakin kamu cuma malu-malu!',
+      '😘 Kamu sayang aku kan?',
+      '💕 Aku tahu kamu cinta aku!',
+      '🥺 Jangan bohong dong...',
+      '😊 Kamu pasti bercanda!'
+    ];
+
     quizYes.addEventListener('click', () => {
-      const responses = [
-        '💕 Aku juga sayang banget sama kamu!',
-        '💖 Aku cinta kamu lebih!',
-        '🥰 Kamu bikin aku bahagia!',
-        '😍 Aku suka kamu banget!',
-        '💗 Kamu segalanya untukku!'
-      ];
-      showMessage(responses[Math.floor(Math.random() * responses.length)]);
+      const msg = quizYesResponses[Math.floor(Math.random() * quizYesResponses.length)];
+      showNotificationWith(msg, '💖', 'Kamu Jawab Iya! 💕');
+      showMessage(msg);
       clickCount += 3;
       updateCounter();
       createFloatingHearts(15, '💖');
@@ -1602,14 +1625,9 @@
     });
 
     quizNo.addEventListener('click', () => {
-      const responses = [
-        '😅 Bohong! Pasti iya kan?',
-        '🤔 Aku yakin kamu cuma malu-malu!',
-        '😘 Kamu sayang aku kan?',
-        '💕 Aku tahu kamu cinta aku!',
-        '🥺 Jangan bohong dong...'
-      ];
-      showMessage(responses[Math.floor(Math.random() * responses.length)]);
+      const msg = quizNoResponses[Math.floor(Math.random() * quizNoResponses.length)];
+      showNotificationWith(msg, '😅', 'Kamu Jawab Tidak?');
+      showMessage(msg);
       clickCount += 1;
       updateCounter();
       createFloatingHearts(8, '😅');
@@ -1625,7 +1643,7 @@
     });
 
     // ============================================================
-    //  DATA PESAN
+    //  DATA PESAN (diperkaya variasi)
     // ============================================================
     const messages = {
       cinta: [
@@ -2025,7 +2043,8 @@
           'Aku suka sticker ini! 🥰',
           'Sheila, kamu lucu banget! 😄',
           'Ini sticker favoritku! 💖',
-          'Sheila, coba lihat ini! 😊'
+          'Sheila, coba lihat ini! 😊',
+          'Sticker ini seindah kamu! 💕'
         ];
         const msg = msgs[Math.floor(Math.random() * msgs.length)];
         showNotificationWith(msg, '🎨', 'Sticker Cinta');
@@ -2068,11 +2087,13 @@
     // --- Tombol Lanjut ---
     btnNext.addEventListener('click', function() {
       goToStage('question');
-      showNotificationWith(
+      const questions = [
         'Sheila, aku mau tanya sesuatu...<br>Jawab dengan jujur ya! 💕',
-        '💌',
-        'Pertanyaan Penting'
-      );
+        'Sheila, siap-siap ya...<br>Aku mau nanya nih! 😊',
+        'Sheila, pertanyaan penting nih!<br>Jangan bohong ya! 💕'
+      ];
+      const msg = questions[Math.floor(Math.random() * questions.length)];
+      showNotificationWith(msg, '💌', 'Pertanyaan Penting');
       showMessage('Sheila, aku mau tanya sesuatu...', '💌');
       createFloatingHearts(8);
       document.getElementById('mainSubtitle').textContent = '— jawab dengan jujur ya, Sheila —';
@@ -2081,9 +2102,14 @@
     // --- YES / NO Bucin ---
     document.getElementById('btnYes').addEventListener('click', function() {
       goToStage('all');
-      const msg = 'Sheila sayang aku! Aku juga sayang banget sama Sheila! 💖💕';
+      const msgs = [
+        'Sheila sayang aku! Aku juga sayang banget sama Sheila! 💖💕',
+        'YES! Sheila cinta aku! Aku cinta Sheila! 💕',
+        'Sheila bilang iya! Aku bahagia banget! 💖'
+      ];
+      const msg = msgs[Math.floor(Math.random() * msgs.length)];
       showNotificationWith(
-        '💖 SHEILA SAYANG AKU! 💖<br>Aku juga sayang banget sama Sheila!<br>Sekarang pilih tombol di bawah ya!',
+        '💖 SHEILA SAYANG AKU! 💖<br>Sekarang pilih tombol di bawah ya!',
         '💖',
         'YES! 💕'
       );
@@ -2127,7 +2153,12 @@
     });
 
     document.getElementById('btnHujan').addEventListener('click', function() {
-      const msg = '💕 Hujan hati untuk Sheila! Semoga kamu tersenyum. 💕';
+      const msgs = [
+        '💕 Hujan hati untuk Sheila! Semoga kamu tersenyum. 💕',
+        '💗 Hujan cinta dari aku buat Sheila! 🌧️💖',
+        '☔ Hujan rindu buat Sheila! Jangan kedinginan ya! 💕'
+      ];
+      const msg = msgs[Math.floor(Math.random() * msgs.length)];
       showNotificationWith(msg, '💗', '💗 Hujan Hati');
       showMessage(msg, getRandomSticker());
       createFloatingHearts(20);
@@ -2177,11 +2208,15 @@
     updateCounter();
     tryAutoPlay();
     goToStage('welcome');
-    showMessage('Halo Sheila! Selamat datang 😊💕', '👋');
+    const welcomeMessages = [
+      'Halo Sheila! Selamat datang😊💕',
+      'Sheila! Aku udah nungguin kamu! 😄💕'
+    ];
+    showMessage(welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)], '👋');
 
-    console.log('💕 Bucin Level Max untuk Sheila! 💕');
+    console.log('💕');
     console.log('✈️ Cheated by @lyzvldx');
-    console.log('💖 Semua fitur menampilkan notifikasi pop-up!');
+    console.log('💖 Semua fitur menampilkan notifikasi pop-up dengan variasi!');
   </script>
 </body>
 </html>
